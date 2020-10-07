@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+#radarr
+  radarr:
+    image: linuxserver/radarr:preview
+    container_name: radarr
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGFOLDER}/radarr:/config
+      - ${MOVIEFOLDER}:/movies
+      - ${DOWNLOADFOLDER}:/downloads
+      - ${WATCHFOLDER}:/watch
+    ports:
+      - 7878:7878
+    restart: unless-stopped
