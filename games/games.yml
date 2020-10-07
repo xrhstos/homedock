@@ -1,2 +1,22 @@
 #this is the game compose file
---
+---
+version: "2.1"
+services:
+#factorio
+  factorio:
+    container_name: factorio
+    image: factoriotools/factorio
+    build: .
+    ports:
+     - 34197:34197/udp
+     - 27015:27015/tcp
+    volumes:
+     - ${CONFIGFOLDER}/factorio:/factorio
+    environment:
+     - PUID=${USERID}
+     - PGID=${GROUPID}
+     - LOAD_LATEST_SAVE=true
+     - UPDATE_MODS_ON_START=true
+     - USERNAME=${FACTORIOUSER}
+     - TOKEN=${FACTORIOTOKEN}
+    restart: always

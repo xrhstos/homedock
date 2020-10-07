@@ -1,0 +1,3 @@
+Here is a tip:
+
+chown -R 845:845 /a/path/to/docker/config/folder/factorio
