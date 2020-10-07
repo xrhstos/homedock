@@ -1,4 +1,4 @@
-#this is the game compose file
+#factorio
 ---
 version: "2.1"
 services:
