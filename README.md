@@ -12,3 +12,4 @@ Here is a listing of all docker compose files:
 + media/radarr   : a movies management software for your server
 + media/sonarr   : a tvshoes management software for your server
 + media/bazarr   : a subtitles management software for your server
++ media/jackett  : an indexer for all your needs(you need lidarr/radarr/sonarr/bazarr & transmission in order to work)
