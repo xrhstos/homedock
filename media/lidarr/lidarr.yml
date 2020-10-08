@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  lidarr:
+    image: linuxserver/lidarr:preview
+    container_name: lidarr
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGFOLDER}/lidarr:/config
+      - ${MUSICFOLDER}:/music
+      - ${DOWNLOADFOLDER}:/downloads
+      - ${WATCHFOLDER}:/watch
+    ports:
+      - 8686:8686
+    restart: unless-stopped
