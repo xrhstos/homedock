@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+#jackett
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGFOLDER}/jackett:/config
+      - ${DOWNLOADFOLDER}:/downloads
+    ports:
+      - 9117:9117
+    dns: 1.1.1.1
+    restart: unless-stopped
