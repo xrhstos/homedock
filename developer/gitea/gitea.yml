@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+#gitea
+  gitea:
+    image: gitea/gitea:latest
+    environment:
+      - USER_UID=${USERID}
+      - USER_GID=${GROUPID}
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - ${CONFIGFOLDER}/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 8081:3000
+      - 2221:22

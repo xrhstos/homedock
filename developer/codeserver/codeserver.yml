@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+#codeserver
+  code-server:
+    image: linuxserver/code-server
+    container_name: code-server
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - PASSWORD=${MYPASSWORD}
+    ports:
+      - 8443:8443
+    volumes:
+      - ${CODER}:/home/coder/project'

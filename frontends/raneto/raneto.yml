@@ -1,0 +1,13 @@
+#raneto
+raneto:
+    image: linuxserver/raneto
+    container_name: raneto
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGFOLDER}/raneto:/config
+    ports:
+      - 3200:3000
+    restart: unless-stopped

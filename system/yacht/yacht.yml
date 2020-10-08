@@ -1,0 +1,11 @@
+---
+version: "2.1"
+services:
+#yacht
+  yacht:
+    image: selfhostedpro/yacht:vue
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${CONFIGFOLDER}/yacht/config:/config
+    ports:
+      - 8000:8000

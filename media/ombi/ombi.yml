@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+#ombi
+  ombi:
+    image: linuxserver/ombi
+    container_name: ombi
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - BASE_URL=/ombi #optional
+    volumes:
+      - ${CONFIGFOLDER}/ombi/config:/config
+    ports:
+      - 3579:3579
+    restart: unless-stopped

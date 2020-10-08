@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+#guacamole
+  guacamole:
+    image: oznu/guacamole
+    container_name: guacamole
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGFOLDER}/guacamole/config:/config
+    ports:
+      - 8082:8080
+    restart: unless-stopped

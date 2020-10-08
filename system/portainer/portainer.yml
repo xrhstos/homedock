@@ -1,0 +1,15 @@
+---
+version: "2.1"
+services:
+#portainer
+  portainer:
+    networks:
+    skynet:
+    ports:
+      - 9009:9000
+    container_name: portainer
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${CONFIGFOLDER}/portainer:/data
+    image: portainer/portainer
