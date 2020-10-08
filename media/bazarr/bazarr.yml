@@ -1,0 +1,18 @@
+version: "2.1"
+services:
+#bazarr
+  bazarr:
+    image: linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGFOLDER}/bazarr:/config
+      - ${MOVIEFOLDER}:/movies
+      - ${TVFOLDER}:/tv
+      - ${DOWNLOADFOLDER}:/downloads
+    ports:
+      - 6767:6767
+    restart: unless-stopped
