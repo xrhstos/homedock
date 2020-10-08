@@ -27,3 +27,5 @@ Here is a listing of all docker compose files:
 + tools/duplicati    : backup your configs of your docker containers
 + developer/codeserver : visual studio on your browser
 + developer/gitea    : selfhosted git
++ servers/openvpn    : openvpn server
++ servers/nginxproxymanager : reverse proxy with the ease of nginxproxymanager
