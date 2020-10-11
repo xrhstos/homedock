@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+#mailserver
+  mailserver:
+    network_mode: host
+    container_name: mailserver
+    image: analogic/poste.io
+    environment:
+      - TZ=${TIMEZONE}
+      - DISABLE_RSPAMD=TRUE
+      - HTTP_PORT=8080
+      - HTTPS_PORT=4433
+      - DISABLE_ROUNDCUBE=TRUE
+    volumes:
+      - ${CONFIGFOLDER}/mailserver:/data

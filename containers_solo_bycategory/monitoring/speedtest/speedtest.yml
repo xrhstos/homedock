@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+#speedtest
+  speedtest:
+    image: barrycarey/speedtest-for-influxdb-and-grafana
+    container_name: speedtest
+    networks:
+    skynet:
+    volumes:
+      - ${CONFIGFOLDER}/speetest/config.ini:/src/config.ini
+    restart: always
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+networks:
+  skynet:
+    external: true

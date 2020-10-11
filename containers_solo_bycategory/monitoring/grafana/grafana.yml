@@ -1,0 +1,29 @@
+---
+version: "2.1"
+services:
+#grafana
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    volumes:
+         - ${CONFIGFOLDER}/grafana:/config
+    networks:
+    skynet:
+    restart: unless-stopped
+    ports:
+         - 3000:3000
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - GF_PATHS_DATA=/config/data
+      - GF_PATHS_LOGS=/config/logs
+      - GF_PATHS_PLUGINS=/config/plugins
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-worldmap-panel
+      - GF_SECURITY_ADMIN_PASSWORD=${MYPASSWORD}
+    depends_on:
+      - influxdb
+      - varken
+networks:
+  skynet:
+    external: true

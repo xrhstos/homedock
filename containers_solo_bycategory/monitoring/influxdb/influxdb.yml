@@ -1,0 +1,21 @@
+---
+version: "2.1"
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    networks:
+      - skynet
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIGFOLDER}/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - ${CONFIGFOLDER}/influxdb:/var/lib/influxdb
+    ports:
+      - 8086:8086
+    restart: unless-stopped
+networks:
+  skynet:
+    external: true
